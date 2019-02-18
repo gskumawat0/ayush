@@ -1,0 +1,31 @@
+{
+  "name": "ayush",
+  "version": "1.0.0",
+  "description": "a portfolio website for singer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gskumawat0/ayush.git"
+  },
+  "keywords": [
+    "portfolio",
+    "singer",
+    "node.js",
+    "javascript"
+  ],
+  "author": "Gouri Shankar kumawat <gskumawat555@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gskumawat0/ayush/issues"
+  },
+  "homepage": "https://github.com/gskumawat0/ayush#readme",
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "nodemon": "^1.18.10"
+  }
+}
