@@ -16,7 +16,7 @@
     </header>
     <section id='live' class='section my-3'>
         <h1 class='text-center border-top-bottom py-4'>Ayush Sharma Live</h1>
-        <div class="container">
+        <div class="container pt-3">
             <div class="row d-flex flex-wrap">
                 <div class="col-md-4 col-sm-6 ">
                     <iframe class='rounded-bottom' src="https://www.youtube.com/embed/RmFxHjOb6nk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -44,7 +44,7 @@
     </section>
     <section id="about" class="section my-3">
         <h1 class='text-center border-top-bottom py-4'>About me</h1>
-        <div class="container">
+        <div class="container mt-3">
             <div class="row">
                 <div class="col-md-6">
                     <div class="img-thumbnail">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <article>
+                    <article class='pt-md-4'>
                         There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
                         you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
                         It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour,
@@ -64,45 +64,40 @@
     </section>
     <section id="contact" class="section my-3">
         <h1 class='text-center border-top-bottom py-4'>Contact us</h1>
-        <div class="container">
+        <div class="container mt-3">
             <div class="row">
-                <div class="row">
-                    <div class="col-md-12 w-50">
-                        <form>
-                            <div class="form-group">
-                                <label for="email">Email : </label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Name : </label>
-                                <input type="text" class="form-control" id="name" placeholder="your full name">
-                            </div>
-                            <div class="form-group">
-                                <label for="location">Location :</label>
-                                <input type="text" class="form-control" id="location" placeholder="location of concert">
-                            </div>
-                            <div class="form-group">
-                                <label for="date">Date :</label>
-                                <input type="date" class="form-control" id="date" placeholder="date of concert">
-                            </div>
-                            <div class="form-group">
-                                <label for="duration">Concert Duration : </label>
-                                <input type="text" class="form-control" id="duration" placeholder="duration of concert">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message : </label>
-                                <textarea name="message" id='message' rows='7'></textarea>
-                            </div>
+                <div class=" col-md-6 m-auto">
+                    <form class='w-100'>
+                        <div class="form-group">
+                            <label for="email">Email : </label>
+                            <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name : </label>
+                            <input type="text" class="form-control" id="name" placeholder="your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location :</label>
+                            <input type="text" class="form-control" id="location" placeholder="location of concert">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date :</label>
+                            <input type="date" class="form-control" id="date" placeholder="date of concert">
+                        </div>
+                        <div class="form-group">
+                            <label for="duration">Concert Duration : </label>
+                            <input type="text" class="form-control" id="duration" placeholder="duration of concert">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message : </label>
+                            <textarea class='form-control' name="message" id='message' rows='7'></textarea>
+                        </div>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-
-
-
 
     <% include ./partials/footer %>
