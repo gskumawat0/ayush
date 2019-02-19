@@ -1,0 +1,108 @@
+<% include ./partials/header %>
+    <header>
+        <div id="corousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="/images/guitar-1354025_1920.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="/images/singer-84874_1920.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="/images/musician-349790_1920.jpg" alt="Third slide">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id='live' class='section my-3'>
+        <h1 class='text-center border-top-bottom py-4'>Ayush Sharma Live</h1>
+        <div class="container">
+            <div class="row d-flex flex-wrap">
+                <div class="col-md-4 col-sm-6 ">
+                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/RmFxHjOb6nk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-4 col-sm-6 ">
+                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/b7XIf2u-BUk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-4 col-sm-6 ">
+                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/II-7u_i87eE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-4 col-sm-6 ">
+                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/vAKtNV8KcWg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-4 col-sm-6 ">
+                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/XULUBg_ZcAU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-4 col-sm-6 ">
+                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/_AaMBW4HBW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-4 col-sm-6 ">
+                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/hlWiI4xVXKY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="section my-3">
+        <h1 class='text-center border-top-bottom py-4'>About me</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="img-thumbnail">
+                        <img src="/images/guitar-1354025_1920.jpg" class='img-responsiverounded-bottom w-100 p-2'></img>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <article>
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
+                        you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                        It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour,
+                        or non-characteristic words etc.
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="section my-3">
+        <h1 class='text-center border-top-bottom py-4'>Contact us</h1>
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-12 w-50">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Email : </label>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name : </label>
+                                <input type="text" class="form-control" id="name" placeholder="your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location :</label>
+                                <input type="text" class="form-control" id="location" placeholder="location of concert">
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date :</label>
+                                <input type="date" class="form-control" id="date" placeholder="date of concert">
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Concert Duration : </label>
+                                <input type="text" class="form-control" id="duration" placeholder="duration of concert">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message : </label>
+                                <textarea name="message" id='message' rows='7'></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <% include ./partials/footer %>

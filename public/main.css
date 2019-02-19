@@ -1,0 +1,18 @@
+.navbar-toggler:hover,
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.carousel-item img {
+    height: 100vh;
+}
+
+.border-top-bottom {
+    border-top: 2px solid purple;
+    border-bottom: 2px solid purple;
+}
+
+.col-md-4 iframe {
+    width: 100%;
+    height: auto;
+}
