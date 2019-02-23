@@ -19,6 +19,9 @@ const indexRoute = require("./routes/index");
 const authRoute = require("./routes/auth");
 const adminRoute = require("./routes/admin");
 
+//require models
+const User = require("./models/user");
+
 const dburl = process.env.DATABASEURL;
 mongoose.connect(dburl, { useNewUrlParser: true, useCreateIndex: true });
 mongoose.set('debug', true);
@@ -46,6 +49,45 @@ app.use(csrf({ cookie: true })); // place below session and cookieparser and abo
 app.use(function(err, req, res, next) {
     req.flash('error', err.message);
     next(err);
+});
+
+//authorization
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+passport.use(new LocalStrategy(User.authenticate()));
+// passport.use(new LocalStrategy(
+//     function(username, password, done) {
+//         User.findOne({ username: username }, function(err, user) {
+//             if (err) { return done(err); }
+//             if (!user) {
+//                 return done(null, false, { message: 'Incorrect username.' });
+//             }
+//             if (!user.validPassword(password)) {
+//                 return done(null, false, { message: 'Incorrect password.' });
+//             }
+//             return done(null, user);
+//         });
+//     }
+// ));
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    // res.locals.csrfToken = req.csrfToken();
+    next();
 });
 
 app.use(indexRoute);
