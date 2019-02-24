@@ -7,9 +7,10 @@ var messageSchema = new mongoose.Schema({
     mobile: Number,
     name: String,
     location: String,
-    date: Date,
+    showDate: Date,
     duration: String,
-    message: String
+    message: String,
+    date: { type: Date, default: Date.now() }
 }, { usePushEach: true });
 
 module.exports = mongoose.model("Message", messageSchema);

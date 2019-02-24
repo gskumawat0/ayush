@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+ <div class="container my-5 py-5  ">
+  <%  if(error && error.length > 0){ %>
+   <div class="alert alert-danger mt-5" role="alert">
+    <%- error %>
+   </div>
+   <% } %>
+    <h1 class="p-5  text-center">Signup Here</h1>
+    <div class="row">
+     <div class="col-md-6 mx-auto">
+      <form action="/auth/signup" method="post">
+       <div class="form-group">
+        <label for="username">Userame: </label>
+        <input type="text" id='username' name="username" placeholder="username" class="form-control">
+       </div>
+       <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="email" id='email' name="email" placeholder="email" class="form-control">
+       </div>
+       <div class="form-group">
+        <label for="password">Password: </label>
+        <input type="password" id='password' name="password" placeholder="password" class="form-control">
+       </div>
+       <div class="form-group">
+        <label for="admin">Admin Code: </label>
+        <input type="password" id='admin' name="adminCode" placeholder="your admin code" class="form-control">
+       </div>
+       <div class="form-group">
+        <input type="submit" class="form-control form-roup btn btn-success">
+        <p></p>Have a account? <a href="/auth/aulogin">Login here</a></p>
+       </div>
+       <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
+      </form>
+     </div>
+    </div>
+ </div>
+ <% include ../partials/footer %>

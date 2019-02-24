@@ -43,7 +43,7 @@ contact no.: ${message.mobile},
 location: ${message.location},
 duration: ${message.duration},
 message: ${message.message}
-date: ${message.date}
+date: ${message.showDate}
 
 
 Ayush Sharma`,
@@ -64,7 +64,7 @@ contact no.: ${message.mobile},
 location: ${message.location},
 duration: ${message.duration},
 message: ${message.message}
-date: ${message.date}
+date: ${message.showDate}
 
 pat on your back. you are now becomming popular.
 `,

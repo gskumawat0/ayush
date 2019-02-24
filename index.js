@@ -91,8 +91,8 @@ app.use(function(req, res, next) {
 });
 
 app.use(indexRoute);
+app.use('/auth', authRoute);
 app.use('/admin', adminRoute);
-app.use('/login', authRoute);
 
 app.get('*', function(req, res) {
     res.send(`<h1> you bloody hell.. don't try to  mess with me.</h1>`);

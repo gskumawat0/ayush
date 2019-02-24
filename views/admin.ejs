@@ -1,0 +1,53 @@
+<% include ./partials/header %>
+    <div class='container my-5 py-5'>
+        <%  if(error && error.length > 0){ %>
+            <div class="alert alert-danger " role="alert">
+                <%- error %>
+            </div>
+            <% } %>
+                <%  if(success && success.length > 0){ %>
+                    <div class="alert alert-success " role="alert">
+                        <%- success %>
+                    </div>
+                    <% } %>
+                        <h1 class="p-5 text-center">Manage your Website</h1>
+                        <section id="youtubeVideos">
+                            <h2 class='d-inline-block'>Youtube Videos</h2>
+                            <button class="btn btn-primary float-right" type="button" data-toggle="collapse" data-target="#videoForm" aria-expanded="false" aria-controls="collapseVideoForm">Add a Video</button>
+                            <div class="collapse my-3" id="videoForm">
+                                <form method='post' class='col-md-10' action='/admin/video'>
+                                    <div class="form-group">
+                                        <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
+                                        <label for="url">Youtube Url : </label>
+                                        <input type="text" class="form-control" id="url" name='ytVideoUrl' aria-describedby="youtue video url" placeholder="youtube video url">
+                                    </div>
+                                    <button class="btn btn-primary">Submit</button>
+                                </form>
+                                <hr>
+                            </div>
+                            <div class="row d-flex flex-wrap my-5">
+                                <div class="col-md-3 col-sm-6 mx-3">
+                                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/hlWiI4xVXKY" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <div class="">
+                                        <form action='/admin/video/videoId' class='text-center' method='delete'>
+                                            <button class="btn btn-danger mx-5"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                            <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6 mx-3">
+                                    <iframe class='rounded-bottom' src="https://www.youtube.com/embed/_AaMBW4HBW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <div class="">
+                                        <form action='/admin/video/videoId' class='text-center' method='delete'>
+                                            <button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                            <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+    </div>
+    <% include ./partials/footer %>

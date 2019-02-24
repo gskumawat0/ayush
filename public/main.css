@@ -77,9 +77,9 @@ h1.bg-dark {
     /* Hidden by default */
     position: fixed;
     /* Fixed/sticky position */
-    bottom: 80px;
+    bottom: 50px;
     /* Place the button at the bottom of the page */
-    right: 30px;
+    right: 20px;
     /* Place the button 30px from the right */
     z-index: 99;
     /* Make sure it does not overlap */
@@ -98,11 +98,11 @@ h1.bg-dark {
     font-size: 18px;
     /* Increase font size */
     transition-delay: .5s;
-    transition-duration: 1s;
+    transition-duration: 5s;
 }
 
 #scrollTop:hover {
-    background-color: #555;
+    background: #333;
     /* Add a dark-grey background on hover */
 }
 
@@ -111,5 +111,12 @@ h1.bg-dark {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+@media (max-width: 500px) {
+    .carousel-item img {
+        height: 80vh;
+
     }
 }

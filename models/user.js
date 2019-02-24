@@ -8,6 +8,8 @@ var userSchema = new mongoose.Schema({
         required: true
     },
     password: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 }, { usePushEach: true });
 
 userSchema.plugin(passportLocalMongoose);
