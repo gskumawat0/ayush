@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 
 // require models
 const Message = require("../models/message");
+const Admin = require("../models/admin");
 
 // nodemailer setup
 // create reusable transporter object using the default SMTP transport
@@ -17,9 +18,11 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-router.get('/', function(req, res) {
+router.get('/', async function(req, res) {
     try {
-        res.render('index', { csrfToken: req.csrfToken() });
+        let site = await Admin.findOne({});
+        // console.log(site);
+        res.render('index', { csrfToken: req.csrfToken(), site });
     }
     catch (err) {
         req.flash('error', err.message);

@@ -2,15 +2,12 @@
     <header class='mb-1 mt-5'>
         <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active" data-interval="3000">
-                    <img src="/images/guitar-1354025_1920.jpg" class="d-block w-100" alt="slide 1">
-                </div>
-                <div class="carousel-item" data-interval="5000">
-                    <img src='/images/singer-84874_1920.jpg' class="d-block w-100" alt="slide 2">
-                </div>
-                <div class="carousel-item" data-interval="5000">
-                    <img src="/images/musician-349790_1920.jpg" class="d-block w-100" alt="slide 3">
-                </div>
+                <% site.images.forEach((image, i)=>{ %>
+                    <div class="carousel-item <%-i === 0 && `active` %>" data-interval="
+                    <%- (i === 0 && 3000) || 5000%>">
+                        <img src="<%=image.image %>" class="d-block w-100" alt="slide <%- i+1 %>">
+                    </div>
+                    <% }) %>
             </div>
             <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -26,27 +23,11 @@
         <h1 class='text-center bg-dark text-white py-4'>Ayush Sharma Live</h1>
         <div class="container mt-3">
             <div class="row d-flex flex-wrap">
-                <div class="col-md-8 mx-auto rounded-bottom mb-3  ">
-                    <iframe class='rounded-bottom w-100' src="https://www.youtube.com/embed/RmFxHjOb6nk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="col-md-8 mx-auto my-2">
-                    <iframe class='rounded-bottom w-100' src="https://www.youtube.com/embed/b7XIf2u-BUk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="col-md-8  mx-auto my-2">
-                    <iframe class='rounded-bottom w-100' src="https://www.youtube.com/embed/II-7u_i87eE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="col-md-8  mx-auto my-2">
-                    <iframe class='rounded-bottom w-100' src="https://www.youtube.com/embed/vAKtNV8KcWg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="col-md-8 mx-auto my-2">
-                    <iframe class='rounded-bottom w-100' src="https://www.youtube.com/embed/XULUBg_ZcAU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="col-md-8 mx-auto my-2">
-                    <iframe class='rounded-bottom w-100' src="https://www.youtube.com/embed/_AaMBW4HBW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="col-md-8 mx-auto my-2">
-                    <iframe class='rounded-bottom w-100' src="https://www.youtube.com/embed/hlWiI4xVXKY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+                <% site.videos.forEach((video)=>{ %>
+                    <div class="col-md-8 mx-auto rounded-bottom mb-3  ">
+                        <iframe class='rounded-bottom w-100' src='<%=video.ytVideoUrl %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <% }) %>
             </div>
         </div>
     </section>
