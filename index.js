@@ -1,4 +1,5 @@
-process.env.NODE_ENV === 'development' && require("dotenv").config();
+// process.env.NODE_ENV === 'development' && 
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -26,7 +27,7 @@ const dburl = process.env.DATABASEURL;
 mongoose.connect(dburl, { useNewUrlParser: true, useCreateIndex: true })
     .then(console.log(`connection established`))
     .catch(err => {
-        console.log(err, `db url is ${dburl}`);
+        console.log(err.message, `db url is ${dburl}`);
     })
 mongoose.set('debug', true);
 app.use(methodOverride("_method"));
