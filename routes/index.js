@@ -35,7 +35,7 @@ router.post('/', async function(req, res) {
         let message = await Message.create(req.body);
         // email for customer
         let welcomeMailOptions = {
-            from: '"Ayush Sharma 👻" <projectmail@nintia.in>', // sender address
+            from: '"Ayush Sharma" <projectmail@nintia.in>', // sender address
             to: message.email, // list of receivers
             subject: `thanks for contacting us`, // Subject line
             text: `Hi ${message.name},
