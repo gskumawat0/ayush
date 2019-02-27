@@ -23,7 +23,11 @@ const adminRoute = require("./routes/admin");
 const User = require("./models/user");
 
 const dburl = process.env.DATABASEURL;
-mongoose.connect(dburl, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(dburl, { useNewUrlParser: true, useCreateIndex: true })
+    .then(console.log(`connection established`))
+    .catch(err => {
+        console.log(err, `db url is ${dburl}`);
+    })
 mongoose.set('debug', true);
 app.use(methodOverride("_method"));
 app.use(bodyParser.json());
