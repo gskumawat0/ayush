@@ -12,14 +12,14 @@ const Admin = require("../models/admin");
 const Message = require("../models/message");
 
 //setup s3 bucket
-var s3 = new aws.S3({
+const s3 = new aws.S3({
     secretAccessKey: process.env.AWS_SECRET_ACCESS,
     accessKeyId: process.env.AWS_ACCESS_KEY,
     region: 'ap-southeast-1'
 
 });
 
-var upload = multer({
+const upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'iayush',
@@ -36,8 +36,9 @@ var upload = multer({
 
 
 const singleUpload = upload.single('image');
-const diffFieldUpload = upload.fields([{ name: 'site[image1]', maxCount: 2 }, { name: 'site[image2]', maxCount: 2 }]);
-const multiUpload = upload.array('site[images]', 12);
+// const diffFieldUpload = upload.fields([{ name: 'site[image1]', maxCount: 2
+// }, { name: 'site[image2]', maxCount: 2 }]);
+// const multiUpload = upload.array('site[images]', 12);
 
 
 //show admin page
@@ -99,7 +100,7 @@ router.put('/slide/:imageKey', isLoggedIn, singleUpload, async function(req, res
         let { key } = req.file;
         await Admin.findOneAndUpdate({}, { $pull: { images: { key: req.params.imageKey } } }, { upsert: true, new: true });
         await Admin.findOneAndUpdate({}, { $push: { images: { key, image } } }, { upsert: true, new: true });
-        req.flash('success', 'Successfully updated a image');
+        req.flash('success', 'Successfully updated a slider image');
         res.redirect('back');
     }
     catch (err) {
@@ -114,5 +115,29 @@ router.put('/slide/:imageKey', isLoggedIn, singleUpload, async function(req, res
     }
 })
 
+router.put('/profile/:imagekey', isLoggedIn, singleUpload, async function(req, res) {
+    try {
+        s3.deleteObject({
+            Bucket: 'iayush',
+            Key: req.params.imageKey,
+        }).promise();
+        let image = req.file.location;
+        let { key } = req.file;
+
+        await Admin.findOneAndUpdate({}, { $set: { profileImg: { image, key } } }, { new: true });
+        req.flash('success', 'Successfully updated your profile image');
+        res.redirect('back');
+    }
+    catch (err) {
+        if (req.file) {
+            await s3.deleteObject({
+                Bucket: 'iayush',
+                Key: req.file.key,
+            }).promise();
+        }
+        req.flash('error', err.message);
+        res.redirect('back');
+    }
+})
 
 module.exports = router;

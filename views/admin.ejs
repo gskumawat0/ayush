@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                         <label for="url">Youtube Url : </label>
-                        <input type="text" class="form-control" id="url" name='ytVideoUrl' aria-describedby="youtue video url" placeholder="youtube video url">
+                        <input type="text" class="form-control" id="url" name='ytVideoUrl' aria-describedby="youtue video url" placeholder="youtube video url" required>
                     </div>
                     <button class="btn btn-primary">Submit</button>
                 </form>
@@ -42,6 +42,26 @@
             </div>
         </div>
     </section>
+    <section id="profile" class='my-4'>
+        <div class="container">
+            <h2 class=' py-2 '>Profile Image</h2>
+            <div class="row py-2">
+                <div class="col-5">
+                    <img src="<%= site.profileImg.image %>" class='admin-img' />
+                </div>
+                <div class="col-7  p-4">
+                    <form class='form-inline' action='admin/profile/<%= site.profileImg.key %>?_csrf=<%=csrfToken %>&&_method=put' method='post' enctype="multipart/form-data">
+                        <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
+                        <div class="form-group">
+                            <label for="slide-image-1">Upload image to change it</label>
+                            <input type="file" name="image" id='slide-img-1' class='form-control-file my-2' required/>
+                        </div>
+                        <button class="btn btn-primary">Update Image</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="slideImg" class='my-5'>
         <div class="container">
             <h2 class='mb-4'> Slider Images</h2>
@@ -55,7 +75,7 @@
                             <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                             <div class="form-group">
                                 <label for="slide-image-1">Upload image to change it</label>
-                                <input type="file" name="image" id='slide-img-1' class='form-control-file my-2' />
+                                <input type="file" name="image" id='slide-img-1' class='form-control-file my-2' required/>
                             </div>
                             <button class="btn btn-primary">Update Image</button>
                         </form>

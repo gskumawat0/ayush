@@ -5,6 +5,10 @@ var adminSchema = new mongoose.Schema({
         image: String,
         key: String
     }],
+    profileImg: {
+        image: String,
+        key: String
+    },
     videos: [
         {
             ytVideoUrl: String
