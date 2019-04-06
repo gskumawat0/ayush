@@ -126,7 +126,10 @@ h1.bg-dark {
 
 @media (max-width: 500px) {
     .carousel-item img {
-        height: 80vh;
+        height: 65vh;
 
+    }
+    .dropdown-content>a {
+        display: inline-block;
     }
 }
