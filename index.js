@@ -23,7 +23,11 @@ const User = require("./models/user");
 
 const { DATABASEURL: dburl, NODE_ENV, SESSION_ID, PORT = 8000 } = process.env;
 mongoose
-	.connect(dburl, { useNewUrlParser: true, useCreateIndex: true })
+	.connect(dburl, {
+		useNewUrlParser: true,
+		useCreateIndex: true,
+		useUnifiedTopology: true,
+	})
 	.then(console.log(`connection established`))
 	.catch((err) => {
 		console.log(err);
