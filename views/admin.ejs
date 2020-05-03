@@ -59,7 +59,7 @@
 				></iframe>
 				<div class="">
 					<form
-						action="/admin/videos/<%=video._id %>?_method=delete"
+						action="/admin/videos/<%= video._id %>?_method=delete&&_csrf=<%=csrfToken %>"
 						class="text-center"
 						method="post"
 					>
@@ -90,7 +90,7 @@
 				<form
 					class="form-inline"
 					action="admin/profile/image/<%= site.profileImg.key ? site.profileImg.key : '' %>?_csrf=<%=csrfToken %>&&_method=<%= site.profileImg.key ? 'put' : 'post' %>"
-					method="<%= site.profileImg.key ? 'put' : 'post' %>"
+					method="post"
 					enctype="multipart/form-data"
 				>
 					<input

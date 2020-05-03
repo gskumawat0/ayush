@@ -27,6 +27,7 @@ mongoose
 		useNewUrlParser: true,
 		useCreateIndex: true,
 		useUnifiedTopology: true,
+		useFindAndModify: false,
 	})
 	.then(console.log(`connection established`))
 	.catch((err) => {
@@ -86,10 +87,6 @@ app.use(function (req, res, next) {
 	res.locals.success = req.flash("success");
 	// res.locals.csrfToken = req.csrfToken();
 	next();
-});
-
-app.use((req, res, next) => {
-	console.log(req.method, req.url);
 });
 
 app.use(indexRoute);

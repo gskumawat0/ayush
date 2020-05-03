@@ -98,7 +98,7 @@ router.put("/slide/:imageKey", isLoggedIn, singleUpload, async function (
 	res
 ) {
 	try {
-		s3.deleteObject({
+		await s3.deleteObject({
 			Bucket: BUCKET_NAME,
 			Key: req.params.imageKey,
 		}).promise();
