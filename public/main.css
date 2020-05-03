@@ -1,135 +1,127 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .navbar-toggler:hover,
 .navbar-toggler:focus {
-    outline: none;
+	outline: none;
 }
 
 .nav-link {
-    font-size: large;
+	font-size: large;
 }
-
 
 /*show dropdown when hover*/
 
 .dropdown {
-    position: relative;
-    display: inline-block;
+	position: relative;
+	display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 100px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
-
+	background-color: #ddd;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
-
+	display: block;
 }
 
 /*.dropdown:hover .dropbtn {background-color: #3e8e41;}*/
 
 .carousel-item img {
-    height: 100vh;
+	height: 100vh;
 }
 
-
 iframe {
-    height: 350px;
+	height: 350px;
 }
 
 .admin-video {
-    max-height: 200px;
+	max-height: 200px;
 }
 
 .admin-img {
-    width: 100%;
-    max-height: 150px;
+	max-height: 150px;
 }
 
-
 h1.bg-dark {
-    font-size: large;
+	font-size: large;
 }
 
 /* scroll to top*/
 
 .scrollTop {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
 }
 
 #scrollTop {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Fixed/sticky position */
-    bottom: 50px;
-    /* Place the button at the bottom of the page */
-    right: 20px;
-    /* Place the button 30px from the right */
-    z-index: 99;
-    /* Make sure it does not overlap */
-    border: none;
-    /* Remove borders */
-    outline: none;
-    /* Remove outline */
-    color: white;
-    /* Text color */
-    cursor: pointer;
-    /* Add a mouse pointer on hover */
-    border-radius: 50%;
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Fixed/sticky position */
+	bottom: 50px;
+	/* Place the button at the bottom of the page */
+	right: 20px;
+	/* Place the button 30px from the right */
+	z-index: 99;
+	/* Make sure it does not overlap */
+	border: none;
+	/* Remove borders */
+	outline: none;
+	/* Remove outline */
+	color: white;
+	/* Text color */
+	cursor: pointer;
+	/* Add a mouse pointer on hover */
+	border-radius: 50%;
 
-    padding: 15px;
-    /* Some padding */
-    font-size: 18px;
-    /* Increase font size */
-    transition-delay: .5s;
-    transition-duration: 5s;
+	padding: 15px;
+	/* Some padding */
+	font-size: 18px;
+	/* Increase font size */
+	transition-delay: 0.5s;
+	transition-duration: 5s;
 }
 
 #scrollTop:hover {
-    background: #333;
-    /* Add a dark-grey background on hover */
+	background: #333;
+	/* Add a dark-grey background on hover */
 }
 
 @media (max-width: 770px) {
-    .footer {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+	.footer {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
 }
 
 @media (max-width: 500px) {
-    .carousel-item img {
-        height: 65vh;
-
-    }
-    .dropdown-content>a {
-        display: inline-block;
-    }
+	.carousel-item img {
+		height: 65vh;
+	}
+	.dropdown-content > a {
+		display: inline-block;
+	}
 }

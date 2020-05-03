@@ -34,7 +34,6 @@ const upload = multer({
 			cb(null, { fieldName: file.fieldname });
 		},
 		key: function (req, file, cb) {
-			console.log(file);
 			cb(null, Date.now().toString() + "-" + file.originalname);
 		},
 	}),
@@ -80,13 +79,11 @@ router.post("/videos", isLoggedIn, async function (req, res) {
 //handle video delete request
 router.delete("/videos/:videoId", isLoggedIn, async function (req, res) {
 	try {
-		// console.log('request working');
 		await Admin.findOneAndUpdate(
 			{},
 			{ $pull: { videos: { _id: req.params.videoId } } },
 			{ new: true }
 		);
-		// console.log(site);
 		req.flash("success", `Successfully deleted a Video`);
 		res.redirect("back");
 	} catch (err) {
@@ -101,12 +98,11 @@ router.put("/slide/:imageKey", isLoggedIn, singleUpload, async function (
 	res
 ) {
 	try {
-		// console.log('working');
 		s3.deleteObject({
 			Bucket: BUCKET_NAME,
 			Key: req.params.imageKey,
 		}).promise();
-		// console.log(req.file, 12312, req.file.key);
+
 		let image = req.file.location;
 		let { key } = req.file;
 		await Admin.findOneAndUpdate(
@@ -135,15 +131,20 @@ router.put("/slide/:imageKey", isLoggedIn, singleUpload, async function (
 	}
 });
 
-router.put("/profile/:imagekey", isLoggedIn, singleUpload, async function (
+router.post("/profile/image", isLoggedIn, singleUpload, async function (
 	req,
 	res
 ) {
 	try {
-		s3.deleteObject({
-			Bucket: BUCKET_NAME,
-			Key: req.params.imageKey,
-		}).promise();
+		let { imagekey } = req.params;
+		if (imagekey) {
+			await s3
+				.deleteObject({
+					Bucket: BUCKET_NAME,
+					Key: req.params.imagekey,
+				})
+				.promise();
+		}
 		let image = req.file.location;
 		let { key } = req.file;
 
@@ -167,5 +168,45 @@ router.put("/profile/:imagekey", isLoggedIn, singleUpload, async function (
 		res.redirect("back");
 	}
 });
+
+router.put(
+	"/profile/image/:imagekey",
+	isLoggedIn,
+	singleUpload,
+	async function (req, res) {
+		try {
+			let { imagekey } = req.params;
+			if (imagekey) {
+				await s3
+					.deleteObject({
+						Bucket: BUCKET_NAME,
+						Key: req.params.imagekey,
+					})
+					.promise();
+			}
+			let image = req.file.location;
+			let { key } = req.file;
+
+			await Admin.findOneAndUpdate(
+				{},
+				{ $set: { profileImg: { image, key } } },
+				{ new: true }
+			);
+			req.flash("success", "Successfully updated your profile image");
+			res.redirect("back");
+		} catch (err) {
+			if (req.file) {
+				await s3
+					.deleteObject({
+						Bucket: BUCKET_NAME,
+						Key: req.file.key,
+					})
+					.promise();
+			}
+			req.flash("error", err.message);
+			res.redirect("back");
+		}
+	}
+);
 
 module.exports = router;

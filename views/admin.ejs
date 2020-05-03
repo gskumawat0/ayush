@@ -1,142 +1,215 @@
 <% include ./partials/header %>
-    <div class='container mt-5 pt-5'>
-        <%  if(error && error.length > 0){ %>
-            <div class="alert alert-danger " role="alert">
-                <%- error %>
-            </div>
-            <% } %>
-                <%  if(success && success.length > 0){ %>
-                    <div class="alert alert-success " role="alert">
-                        <%- success %>
-                    </div>
-                    <% } %>
-    </div>
-    <h1 class="py-5 text-center">Manage your Website</h1>
-    <section id="youtubeVideos">
-        <div class="container">
-            <h2 class='d-inline-block mb-4'>Youtube Videos</h2>
-            <button class="btn btn-primary float-right" type="button" data-toggle="collapse" data-target="#videoForm" aria-expanded="false" aria-controls="collapseVideoForm">Add a Video</button>
-            <div class="collapse" id="videoForm">
-                <form method='post' class='col-md-10' action='/admin/videos'>
-                    <div class="form-group">
-                        <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
-                        <label for="url">Youtube Url : </label>
-                        <input type="text" class="form-control" id="url" name='ytVideoUrl' aria-describedby="youtue video url" placeholder="youtube video url" required>
-                    </div>
-                    <button class="btn btn-primary">Submit</button>
-                </form>
-                <hr>
-            </div>
-            <div class="row d-flex flex-wrap">
-                <% site.videos.forEach((video)=>{ %>
-                    <div class="col-md-3 col-sm-6 m-3">
-                        <iframe class='admin-video' src="<%= video.ytVideoUrl %>" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <div class="">
-                            <form action='/admin/videos/<%=video._id %>?_method=delete' class='text-center' method='post'>
-                                <button class="btn btn-danger mx-5"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                                <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
-                            </form>
-                        </div>
-                    </div>
-                    <% }) %>
-            </div>
-        </div>
-    </section>
-    <section id="profile" class='my-4'>
-        <div class="container">
-            <h2 class=' py-2 '>Profile Image</h2>
-            <div class="row py-2">
-                <div class="col-5">
-                    <img src="<%= site.profileImg.image %>" class='admin-img' />
-                </div>
-                <div class="col-7  p-4">
-                    <form class='form-inline' action='admin/profile/<%= site.profileImg.key %>?_csrf=<%=csrfToken %>&&_method=put' method='post' enctype="multipart/form-data">
-                        <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
-                        <div class="form-group">
-                            <label for="slide-image-1">Upload image to change it</label>
-                            <input type="file" name="image" id='slide-img-1' class='form-control-file my-2' required/>
-                        </div>
-                        <button class="btn btn-primary">Update Image</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="slideImg" class='my-5'>
-        <div class="container">
-            <h2 class='mb-4'> Slider Images</h2>
-            <% site.images.forEach((image)=>{ %>
-                <div class="row py-2">
-                    <div class="col-5">
-                        <img src="<%= image.image %>" class='admin-img' />
-                    </div>
-                    <div class="col-7  p-4">
-                        <form class='form-inline' action='admin/slide/<%= image.key %>?_csrf=<%=csrfToken %>&&_method=put' method='post' enctype="multipart/form-data">
-                            <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
-                            <div class="form-group">
-                                <label for="slide-image-1">Upload image to change it</label>
-                                <input type="file" name="image" id='slide-img-1' class='form-control-file my-2' required/>
-                            </div>
-                            <button class="btn btn-primary">Update Image</button>
-                        </form>
-                    </div>
-                </div>
-                <% }) %>
-        </div>
-    </section>
-    <section id="messages" class='my-4'>
-        <div class="container">
-            <h2 class=' py-2 '>Messages</h2>
-            <div class="table-responsive">
-                <table class='table table-hover'>
-                    <thead class='thead-dark'>
-                        <tr class='bg-warning  py-5'>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Contact No.</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Show Date</th>
-                            <th scope="col">Requested On</th>
-                            <th scope="col">Duration</th>
-                            <th scope="col" colspan='2'>Message</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% messages.forEach((message)=>{ %>
-                            <tr class=''>
-                                <td>
-                                    <%= message.name %>
-                                </td>
-                                <td>
-                                    <%= message.email %>
-                                </td>
-                                <td>
-                                    <%= message.mobile %>
-                                </td>
-                                <td>
-                                    <%= message.location %>
-                                </td>
-                                <td>
-                                    <%- message.showDate.toString().split(/\d{4}/)[0] %>
-                                </td>
-                                <td>
-                                    <%- message.date.toString().split(/\d{4}/)[0] %>
-                                </td>
-                                <td>
-                                    <%= message.duration %>
-                                </td>
-                                <td>
-                                    <%= message.message %>
-                                </td>
-                            </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-    <div class="">
-        <a id="scrollTop" onclick="topFunction()" class='bg-dark' title="Go to top"><i class="fas px-1 fa-arrow-up h-100 w-100"></i></a>
-    </div>
+<div class="container mt-5 pt-5">
+	<% if(error && error.length > 0){ %>
+	<div class="alert alert-danger" role="alert">
+		<%- error %>
+	</div>
+	<% } %> <% if(success && success.length > 0){ %>
+	<div class="alert alert-success" role="alert">
+		<%- success %>
+	</div>
+	<% } %>
+</div>
+<h1 class="py-5 text-center">Manage your Website</h1>
+<section id="youtubeVideos">
+	<div class="container">
+		<h2 class="d-inline-block mb-4">Youtube Videos</h2>
+		<button
+			class="btn btn-primary float-right"
+			type="button"
+			data-toggle="collapse"
+			data-target="#videoForm"
+			aria-expanded="false"
+			aria-controls="collapseVideoForm"
+		>
+			Add a Video
+		</button>
+		<div class="collapse" id="videoForm">
+			<form method="post" class="col-md-10" action="/admin/videos">
+				<div class="form-group">
+					<input
+						type="hidden"
+						name="_csrf"
+						value="<%= csrfToken %>"
+					/>
+					<label for="url">Youtube Url : </label>
+					<input
+						type="text"
+						class="form-control"
+						id="url"
+						name="ytVideoUrl"
+						aria-describedby="youtue video url"
+						placeholder="youtube video url"
+						required
+					/>
+				</div>
+				<button class="btn btn-primary">Submit</button>
+			</form>
+			<hr />
+		</div>
+		<div class="row d-flex flex-wrap">
+			<% site.videos.forEach((video)=>{ %>
+			<div class="col-md-3 col-sm-6 m-3 text-center">
+				<iframe
+					class="admin-video"
+					src="<%= video.ytVideoUrl %>"
+					frameborder="0"
+					allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
+				<div class="">
+					<form
+						action="/admin/videos/<%=video._id %>?_method=delete"
+						class="text-center"
+						method="post"
+					>
+						<button class="btn btn-danger mx-5">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+							Delete
+						</button>
+						<input
+							type="hidden"
+							name="_csrf"
+							value="<%= csrfToken %>"
+						/>
+					</form>
+				</div>
+			</div>
+			<% }) %>
+		</div>
+	</div>
+</section>
+<section id="profile" class="my-4">
+	<div class="container">
+		<h2 class="py-2">Profile Image</h2>
+		<div class="row py-2">
+			<div class="col-5 text-center">
+				<img src="<%= site.profileImg.image %>" class="admin-img" />
+			</div>
+			<div class="col-7 p-4">
+				<form
+					class="form-inline"
+					action="admin/profile/image/<%= site.profileImg.key ? site.profileImg.key : '' %>?_csrf=<%=csrfToken %>&&_method=<%= site.profileImg.key ? 'put' : 'post' %>"
+					method="<%= site.profileImg.key ? 'put' : 'post' %>"
+					enctype="multipart/form-data"
+				>
+					<input
+						type="hidden"
+						name="_csrf"
+						value="<%= csrfToken %>"
+					/>
+					<div class="form-group">
+						<label for="slide-image-1"
+							>Upload image to change it</label
+						>
+						<input
+							type="file"
+							name="image"
+							id="slide-img-1"
+							class="form-control-file my-2"
+							required
+						/>
+					</div>
+					<button class="btn btn-primary">Update Image</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="slideImg" class="my-5">
+	<div class="container">
+		<h2 class="mb-4">Slider Images</h2>
+		<% site.images.forEach((image)=>{ %>
+		<div class="row py-2">
+			<div class="col-5 text-center">
+				<img src="<%= image.image %>" class="admin-img" />
+			</div>
+			<div class="col-7 p-4">
+				<form
+					class="form-inline"
+					action="admin/slide/<%= image.key %>?_csrf=<%=csrfToken %>&&_method=put"
+					method="post"
+					enctype="multipart/form-data"
+				>
+					<input
+						type="hidden"
+						name="_csrf"
+						value="<%= csrfToken %>"
+					/>
+					<div class="form-group">
+						<label for="slide-image-1"
+							>Upload image to change it</label
+						>
+						<input
+							type="file"
+							name="image"
+							id="slide-img-1"
+							class="form-control-file my-2"
+							required
+						/>
+					</div>
+					<button class="btn btn-primary">Update Image</button>
+				</form>
+			</div>
+		</div>
+		<% }) %>
+	</div>
+</section>
+<section id="messages" class="my-4">
+	<div class="container">
+		<h2 class="py-2">Messages</h2>
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead class="thead-dark">
+					<tr class="bg-warning py-5">
+						<th scope="col">Name</th>
+						<th scope="col">Email</th>
+						<th scope="col">Contact No.</th>
+						<th scope="col">Location</th>
+						<th scope="col">Show Date</th>
+						<th scope="col">Requested On</th>
+						<th scope="col">Duration</th>
+						<th scope="col" colspan="2">Message</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% messages.forEach((message)=>{ %>
+					<tr class="">
+						<td>
+							<%= message.name %>
+						</td>
+						<td>
+							<%= message.email %>
+						</td>
+						<td>
+							<%= message.mobile %>
+						</td>
+						<td>
+							<%= message.location %>
+						</td>
+						<td>
+							<%- message.showDate.toString().split(/\d{4}/)[0] %>
+						</td>
+						<td>
+							<%- message.date.toString().split(/\d{4}/)[0] %>
+						</td>
+						<td>
+							<%= message.duration %>
+						</td>
+						<td>
+							<%= message.message %>
+						</td>
+					</tr>
+					<% }) %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+<div class="">
+	<a id="scrollTop" onclick="topFunction()" class="bg-dark" title="Go to top"
+		><i class="fas px-1 fa-arrow-up h-100 w-100"></i
+	></a>
+</div>
 
-    <% include ./partials/footer %>
+<% include ./partials/footer %>

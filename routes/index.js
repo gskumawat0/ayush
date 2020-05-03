@@ -14,6 +14,7 @@ const {
 	ADMIN_EMAIL,
 } = process.env;
 // nodemailer setup
+
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
 	host: PROJECT_EMAIL_HOST,

@@ -88,6 +88,10 @@ app.use(function (req, res, next) {
 	next();
 });
 
+app.use((req, res, next) => {
+	console.log(req.method, req.url);
+});
+
 app.use(indexRoute);
 app.use("/auth", authRoute);
 app.use("/admin", adminRoute);

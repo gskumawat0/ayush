@@ -5,7 +5,7 @@
                 <% site.images.forEach((image, i)=>{ %>
                     <div class="carousel-item <%-i === 0 && `active` %>" data-interval="
                     <%- (i === 0 && 3000) || 5000%>">
-                        <img src="<%=image.image %>" class="d-block w-100" alt="slide <%- i+1 %>">
+                        <img src="<%=image.image %>" class="d-block w-100" alt="slide <%- i+1 %>" loading='lazy'>
                     </div>
                     <% }) %>
             </div>
@@ -25,7 +25,7 @@
             <div class="row d-flex flex-wrap">
                 <% site.videos.forEach((video)=>{ %>
                     <div class="col-md-8 mx-auto rounded-bottom mb-3  ">
-                        <iframe class='rounded-bottom w-100' src='<%=video.ytVideoUrl %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class='rounded-bottom w-100' loading='lazy' src='<%=video.ytVideoUrl %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <% }) %>
             </div>
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="img-thumbnail">
-                        <img src="<%=site.profileImg.image%>" class='img-responsiverounded-bottom w-100 p-2'></img>
+                        <img src="<%=site.profileImg.image%>" class='img-responsiverounded-bottom w-100 p-2' loading='lazy'></img>
                     </div>
                 </div>
                 <div class="col-md-8">
