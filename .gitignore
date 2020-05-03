@@ -6,3 +6,4 @@ data/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 nodemon.json
+node_modules
