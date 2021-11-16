@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/gskumawat0/ayush#readme",
   "dependencies": {
-    "aws-sdk": "^2.668.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^2.0.3",
